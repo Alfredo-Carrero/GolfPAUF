@@ -33,4 +33,17 @@ public class JugadorService {
                 null
         );
     }
+
+    public List<Jugador> aplicarHandicap(Long torneoId, Integer handicap){
+        List<Jugador> jugadores = jugadorRepository.buscarJugadoresPorTorneoSinCompensar(torneoId);
+
+        for(Jugador jugador : jugadores){
+                jugador.setHandicap(jugador.getHandicap() - handicap);
+
+                jugador.setApellidos(jugador.getApellidos() + " *");
+        }
+
+        return jugadorRepository.saveAll(jugadores);
+
+    }
 }

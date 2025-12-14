@@ -1,11 +1,10 @@
 package com.torneo.golf.controller;
 
 import com.torneo.golf.dto.JugadorDTO;
+import com.torneo.golf.model.Jugador;
 import com.torneo.golf.service.JugadorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +24,10 @@ public class JugadorController {
         return jugadorService.obtenerJugador(id);
     }
 
+    @PostMapping("/api/aplicarHandicap")
+    public List<Jugador> actualizarHandicap(@RequestParam("torneoId") Long torneoId, @RequestParam("handicap") Integer handicap){
+        return jugadorService.aplicarHandicap(torneoId, handicap);
+    }
 }
 
 
