@@ -27,14 +27,19 @@ public class Jugador {
     @OneToMany(mappedBy = "jugador")
     private Set<Clasificacion> clasificaciones;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "etiqueta_id", nullable = false)
+    private Etiqueta etiqueta;
+
     public Jugador() {
     }
 
-    public Jugador(String nombre, String apellidos, String nacionalidad, Integer handicap) {
+    public Jugador(String nombre, String apellidos, String nacionalidad, Integer handicap, Etiqueta etiqueta) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nacionalidad = nacionalidad;
         this.handicap = handicap;
+        this.etiqueta = etiqueta;
     }
 
     public Long getId() {
@@ -83,5 +88,13 @@ public class Jugador {
 
     public void setClasificaciones(Set<Clasificacion> clasificaciones) {
         this.clasificaciones = clasificaciones;
+    }
+
+    public Etiqueta getEtiqueta() {
+        return etiqueta;
+    }
+
+    public void setEtiqueta(Etiqueta etiqueta) {
+        this.etiqueta = etiqueta;
     }
 }

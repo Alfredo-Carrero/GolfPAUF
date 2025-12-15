@@ -1,5 +1,8 @@
 package com.torneo.golf.service;
 
+import com.torneo.golf.model.Clasificacion;
+import com.torneo.golf.model.Etiqueta;
+import com.torneo.golf.model.Jugador;
 import com.torneo.golf.model.Torneo;
 import com.torneo.golf.repository.TorneoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,4 +29,5 @@ public class TorneoService {
 
         return torneoRepository.saveAll(torneos);
     }
+
 }
